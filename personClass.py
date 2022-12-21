@@ -1,9 +1,10 @@
 class Person:
-    def __init__(self, name, age, phone_number):
+    def __init__(self, name, age, phone_number,email_address):
         # The constructor
         self.name = name
         self.age = age
         self.phone_number = phone_number
+        self.email_address = email_address
 
     def get_name(self):
         # Returns the value of the name
@@ -13,7 +14,7 @@ class Person:
         # change the value of the name
         self.name = name
 
-# the following get/set functions do the same for the other attributes
+    # The following get/set functions do the same for the other attributes
     def get_age(self):
         return self.age
 
@@ -25,3 +26,9 @@ class Person:
 
     def set_phone_number(self, phone_number):
         self.phone_number = phone_number
+
+    def get_email_address(self):
+        return self.email_address
+
+    def set_email_address(self, email_address):
+        self.email_address = email_address
