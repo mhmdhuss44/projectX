@@ -1,4 +1,4 @@
-Server: mail.outlook.com
-Port: 25
-Sender: mhmdhuss44@gmail.com
-From: mentoring23@outlook.com
+EMAIL_SMTP: "smtp-mail.outlook.com"
+EMAIL_PORT: 587
+EMAIL_USER: "men_tor_ing_2023@outlook.com"
+EMAIL_PASS: "Zoho123!"
