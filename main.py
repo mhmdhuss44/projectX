@@ -1,24 +1,22 @@
-# import the Person class from the personClass
 from mail_server import MailServer
-from personClass import Person
 
-# person1 = Person('mhmd huss', 21, '0549366894')
-#
-#
-# print(person1.get_name())
-# print(person1.get_age())
-# print(person1.get_phone_number())
-#
-# person1.set_name("king")
-# person1.set_age(30)
-# person1.set_phone_number("884444")
-#
-# print(person1.get_name())
-# print(person1.get_age())
-# print(person1.get_phone_number())
+def run():
+    email_from="men_tor_ing_2023@outlook.com"
+    email_to="orsan.awawdi@gmail.com"
+    subject = "This is a testing email"
+    message="Hi from my email server"
 
-my_mail=MailServer()
-my_mail.load_mail_server()
-print(my_mail.CONFIGS)
+    my_mail=MailServer()
+    my_mail.load_mail_server()
+    send_email_result = my_mail.send_email(email_from=email_from,email_to=email_to,email_subject=subject,email_message=message)
+
+    if send_email_result:
+        print(f"Email was sent successfuly to [{email_to}]")
+    else:
+        print("Error while sending email")
+
+if __name__=="__main__":
+    run()
+
 
 
