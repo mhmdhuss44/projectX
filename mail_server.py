@@ -1,3 +1,4 @@
+import re
 import paths
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -21,6 +22,10 @@ class MailServer:
 
     def send_email(self,email_from:str,email_to:str,email_subject:str,email_message:str) -> bool:
     
+        if not self.__verify_email(email_to):
+            print(f"Email address is not valid. Please follow email address convention abc@abc.com")
+            return False
+
         email_Result = False
         # initialize connection to our email server, we will use Outlook here
         smtp = smtplib.SMTP(self.CONFIGS["EMAIL_SMTP"], port=self.CONFIGS["EMAIL_PORT"])
@@ -47,3 +52,10 @@ class MailServer:
         except Exception as mail_exception:
             print(f"Email was not sent with the following error:[{mail_exception}]")
         return email_Result
+
+    @staticmethod
+    def __verify_email(email_to:str) -> bool:
+
+        regex_str = "@^(?("")("".+?""@)|(([0-9a-zA-Z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-zA-Z])@))(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,6}))$"
+        reg_exp = re.compile(regex_str)
+        return reg_exp.match(email_to)
