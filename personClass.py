@@ -1,10 +1,11 @@
 class Person:
-    def __init__(self, name, age, phone_number,email_address):
+    def __init__(self, name, age, phone_number, email_address):
         # The constructor
         self.name = name
         self.age = age
         self.phone_number = phone_number
-        self.email_address = email_address
+        self.__email_address = email_address
+        # TODO: make all members private
 
     def get_name(self):
         # Returns the value of the name
@@ -28,7 +29,7 @@ class Person:
         self.phone_number = phone_number
 
     def get_email_address(self):
-        return self.email_address
+        return self.__email_address
 
     def set_email_address(self, email_address):
-        self.email_address = email_address
+        self.__email_address = email_address

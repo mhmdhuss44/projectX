@@ -14,7 +14,7 @@ def run():
                                            email_subject=subject, email_message=message)
 
     if send_email_result:
-        print(f"Email was sent successfuly to [{mhmd.get_email_address()}]")
+        print(f"Email was sent successfully to [{mhmd.get_email_address()}]")
     else:
         print("Error while sending email")
 
