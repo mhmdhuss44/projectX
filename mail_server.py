@@ -1,3 +1,4 @@
+import re
 import paths
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -57,6 +58,14 @@ class MailServer:
         except Exception as mail_exception:
             print(f"Email was not sent with the following error:[{mail_exception}]")
         return email_Result
+
+    @staticmethod
+    def __verify_email(email_to:str) -> bool:
+
+        regex_str = "@^(?("")("".+?""@)|(([0-9a-zA-Z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-zA-Z])@))(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,6}))$"
+        reg_exp = re.compile(regex_str)
+        return reg_exp.match(email_to)
+
 
 
 
