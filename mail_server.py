@@ -11,7 +11,7 @@ class MailServer:
         self.CONFIGS = None
 
     def load_mail_server(self):
-        conf_yaml = paths.yaml_path
+        conf_yaml = paths.YAML_PATH
         if conf_yaml.exists():
             with open(file=conf_yaml, mode="r") as yaml_file:
                 try:
