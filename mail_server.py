@@ -66,7 +66,14 @@ class MailServer:
         reg_exp = re.compile(regex_str)
         return reg_exp.match(email_to)
 
-
+    @staticmethod
+    def strip_text(text:str) -> str:
+        characters:str = ['"',"{","}",'[',']']
+        for char in characters:
+            if char in text:
+                text = text.replace(char, '')
+        return text
+            
 
 
 #     The first step is to create a connection to the email server using the SMTP class from the smtplib
