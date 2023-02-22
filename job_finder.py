@@ -51,8 +51,10 @@ class JobFinder:
             print(f"{len(elements)} jobs were found:")
             for element in elements:
                 if element.find('h2').a.text:
-                    job = element.find('h2').a.text
-                    self.__jobs.append(job)
+                    
+                    self.__jobs.append(
+                        {"Job Name": element.find('h2').a.text,
+                        "Link": element.find('h2').a['href']})
         else:
             print(f"no jobs were found for today {self.__today}.")
 
