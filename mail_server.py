@@ -1,3 +1,4 @@
+import re
 import paths
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -11,7 +12,7 @@ class MailServer:
         self.CONFIGS = None
 
     def load_mail_server(self):
-        conf_yaml = paths.yaml_path
+        conf_yaml = paths.YAML_PATH
         if conf_yaml.exists():
             with open(file=conf_yaml, mode="r") as yaml_file:
                 try:
@@ -58,6 +59,21 @@ class MailServer:
             print(f"Email was not sent with the following error:[{mail_exception}]")
         return email_Result
 
+    @staticmethod
+    def __verify_email(email_to:str) -> bool:
+
+        regex_str = "@^(?("")("".+?""@)|(([0-9a-zA-Z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-zA-Z])@))(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,6}))$"
+        reg_exp = re.compile(regex_str)
+        return reg_exp.match(email_to)
+
+    @staticmethod
+    def strip_text(text:str) -> str:
+        characters:str = ['"',"{","}",'[',']']
+        for char in characters:
+            if char in text:
+                text = text.replace(char, '')
+        return text
+            
 
 
 #     The first step is to create a connection to the email server using the SMTP class from the smtplib

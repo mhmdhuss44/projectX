@@ -2,7 +2,8 @@ import os
 from pathlib import Path
 
 ABSOLUTE_PATH = Path(os.path.abspath(__file__)).parent
-yaml_path= ABSOLUTE_PATH / "mail_server.yaml"
+YAML_PATH= ABSOLUTE_PATH / "mail_server.yaml"
+JSON_PATH= ABSOLUTE_PATH / "jobs.json"
 
 
 # This class imports the os and Path modules from the pathlib library. It then defines a constant
