@@ -60,11 +60,11 @@ class MailServer:
         return email_Result
 
     @staticmethod
-    def __verify_email(email_to:str) -> bool:
+    def verify_email(email_to:str) -> bool:
 
-        regex_str = "@^(?("")("".+?""@)|(([0-9a-zA-Z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-zA-Z])@))(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,6}))$"
-        reg_exp = re.compile(regex_str)
-        return reg_exp.match(email_to)
+        regex_str = r"[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
+        match = re.match(regex_str, email_to)
+        return bool(match)
 
     @staticmethod
     def strip_text(text:str) -> str:

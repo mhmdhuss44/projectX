@@ -9,8 +9,8 @@ from paths import JSON_PATH
 
 class JobFinder:
 
-    def __init__(self,company_id:str):
-        self.__company_id = company_id
+    def __init__(self,company_number:str):
+        self.__company_id = company_number
         self.__today = str(date.today())
         self.__listObj = []
         self.__jobs=[]
