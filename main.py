@@ -22,9 +22,9 @@ def run():
         send_email_result = my_mail.send_email(email_from=email_from, email_to=orsan.get_email_address(),
                                             email_subject=subject, email_message=MailServer.strip_text(message))
         if send_email_result:
-            print(f"Email was sent successfully to [{orsan.get_email_address()}]")
+            print(f"Email was sent successfully to [{orsan.get_email_address()}].")
     except EmailNotValidError as e: 
-        print(f"Invalid email address:[{orsan.get_email_address()}]")
+        print(f"Invalid email address:[{orsan.get_email_address()}].")
 
 if __name__ == "__main__":
     
