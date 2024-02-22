@@ -8,6 +8,10 @@ import yaml
 
 class MailServer:
 
+    __EMAIL_SUBJECT = "Job results found for company - "
+    #subject = f"Job results found for company [{selected_company.company_name}]"
+
+
     def __init__(self):
         self.CONFIGS = None
 
@@ -24,11 +28,15 @@ class MailServer:
     #  it will open the file and read the content using the yaml.safe_load() method
     #    , and store it in the CONFIGS attribute of the class.
 
+    def send_email(self,person,message,company):
 
+        return self.__email_dispatcher(email_to=person.get_email_address(),
+                                                email_subject=self.__EMAIL_SUBJECT + company,
+                                                email_message=MailServer.strip_text(message))
 
     # This function is a method of the MailServer class, it sends an email using the Simple Mail
     # Transfer Protocol (SMTP) library in python.
-    def send_email(self, email_from: str, email_to: str, email_subject: str, email_message: str) -> bool:
+    def __email_dispatcher(self, email_to: str, email_subject: str, email_message: str) -> bool:
 
         email_Result = False
         # initialize connection to our email server, we will use Outlook here
@@ -44,7 +52,7 @@ class MailServer:
         # setup the parameters of the message
         msg = MIMEMultipart()
         message = email_message
-        msg["from"] = email_from
+        msg["from"] = self.CONFIGS["EMAIL_FROM"]
         msg["to"] = email_to
         msg["subject"] = email_subject
 
